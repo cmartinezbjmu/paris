@@ -28,6 +28,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="PWA Clima">
   <link rel="apple-touch-icon" href="/images/icons/public-transport-subway128.png">
+  <!-- CMB: Add description here -->
+  <meta name="description" content="Una aplicación que permite consultar en tiempo real los horarios de metro de unas de las estaciones más importantes de París">
+  <!-- CMB: Add meta theme-color -->
+  <meta name="theme-color" content="#FFD100" />
 </head>
 <body>
 
@@ -97,6 +101,16 @@
 
   <!-- Uncomment the line below when ready to test with fake data -->
   <script src="scripts/app.js" async></script>
-
+  <script>
+    // CMB: Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((reg) => {
+              console.log('Service worker registered.', reg);
+            });
+      });
+    }
+  </script>
 </body>
 </html>
