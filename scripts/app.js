@@ -73,6 +73,12 @@
         var schedules = data.schedules;
         var card = app.visibleCards[key];
 
+        // CODELAB: Add code to call getForecastFromCache.
+        getForecastFromCache(schedules)
+        .then((forecast) => {
+        renderForecast(card, forecast);
+        });
+
         if (!card) {
             var label = data.label.split(', ');
             var title = label[0];
@@ -151,7 +157,7 @@
      */
 
     var initialStationTimetable = {
-
+        
         key: 'metros/1/bastille/A',
         label: 'Bastille, Direction La Défense',
         created: '2017-07-18T17:08:42+02:00',
@@ -187,6 +193,29 @@
         {key: initialStationTimetable.key, label: initialStationTimetable.label}
     ];
 
+
+    /**
+     * Get's the cached forecast data from the caches object.
+     *
+     * @param {string} coords Location object to.
+     * @return {Object} The weather forecast, if the request fails, return null.
+     */
+    function getForecastFromCache(coords) {
+    // CODELAB: Add code to get weather forecast from the caches object.
+    if (!('caches' in window)) {
+      return null;
+    }
+    const url = `${window.location.origin}/forecast/${coords}`;
+    return caches.match(url)
+        .then((response) => {
+          if (response) {
+            return response.json();
+          }
+          return null;
+        })
+        .catch((err) => {
+          console.error('Error getting data from cache', err);
+          return null;
+        });
+    }
 })();
-
-

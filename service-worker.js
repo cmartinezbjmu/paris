@@ -1,11 +1,25 @@
 'use strict';
 
 // CODELAB: Update cache names any time any of the cached files change.
-const CACHE_NAME = 'static-cache-v3';
-
+const CACHE_NAME = 'static-cache-v5';
+const DATA_CACHE_NAME = 'data-cache-v2';
 // CMB: Update cache names any time any of the cached files change.
 const FILES_TO_CACHE = [
     '/offline.html',
+    '/',
+    '/index.html',
+    '/scripts/app.js',
+    '/scripts/install.js',
+    '/styles/inline.css',
+    '/images/ic_add_white_24px.svg',
+    '/images/ic_refresh_white_24px.svg',
+    '/images/icons/public-transport-subway16.png',
+    '/images/icons/public-transport-subway24.png',
+    '/images/icons/public-transport-subway32.png',
+    '/images/icons/public-transport-subway64.png',
+    '/images/icons/public-transport-subway128.png',
+    '/images/icons/public-transport-subway256.png',
+    '/images/icons/public-transport-subway512.png',
   ];
 
 self.addEventListener('install', (evt) => {
@@ -18,6 +32,13 @@ self.addEventListener('install', (evt) => {
         })
     );
   self.skipWaiting();
+  importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
+
+  if (workbox) {
+    console.log(`Yay! Workbox is loaded 🎉`);
+  } else {
+    console.log(`Boo! Workbox didn't load 😬`);
+  }
 });
 
 self.addEventListener('activate', (evt) => {
