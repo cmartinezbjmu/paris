@@ -140,6 +140,8 @@
         keys.forEach(function (key) {
             app.getSchedule(key);
         });
+        const data = JSON.stringify(keys);
+        localStorage.setItem('locationList', data);
     };
 
     /*
@@ -184,4 +186,7 @@
     app.selectedTimetables = [
         {key: initialStationTimetable.key, label: initialStationTimetable.label}
     ];
+
 })();
+
+

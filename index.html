@@ -15,18 +15,17 @@
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="canonical" href="https://weather-pwa-sample.firebaseapp.com/final/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paris Métro 1</title>
   <link rel="stylesheet" type="text/css" href="styles/inline.css">
   <link rel="manifest" href="/manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="PWA Clima">
+  <meta name="apple-mobile-web-app-title" content="PWA Paris">
   <link rel="apple-touch-icon" href="/images/icons/public-transport-subway128.png">
   <!-- CMB: Add description here -->
   <meta name="description" content="Una aplicación que permite consultar en tiempo real los horarios de metro de unas de las estaciones más importantes de París">
@@ -36,7 +35,10 @@
 <body>
 
   <header class="header">
-    <h1 class="header__title">Paris Métro 1</h1>
+    <h1 class="header__title" style="color: black">Paris Métro 1<a href="https://darksky.net/poweredby/" class="powered-by">
+      Powered by Dark Sky
+    </a></h1>
+    <button id="butInstall" class="headerButton" aria-label="Install" hidden></button>
     <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
     <button id="butAdd" class="headerButton" aria-label="Add"></button>
   </header>
@@ -101,6 +103,8 @@
 
   <!-- Uncomment the line below when ready to test with fake data -->
   <script src="scripts/app.js" async></script>
+  <!-- CMB: Add the install script here -->
+  <script src="/scripts/install.js"></script>
   <script>
     // CMB: Register service worker.
     if ('serviceWorker' in navigator) {
