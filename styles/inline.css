@@ -113,6 +113,11 @@ body {
   .header #butAdd {
     background: url(/images/ic_add_white_24px.svg) center center no-repeat; }
 
+.header .powered-by {
+  color: white;
+  font-size: 0.6em;
+  text-decoration: none;
+}   
 .header__title {
   font-weight: 400;
   font-size: 20px;
