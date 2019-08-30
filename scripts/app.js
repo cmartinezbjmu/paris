@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -143,7 +142,7 @@
             app.spinner.setAttribute('hidden', true);
             app.container.removeAttribute('hidden');
             app.isLoading = false;
-    }
+        }
     };
 
     /*****************************************************************************
@@ -242,16 +241,19 @@
                 result.schedules = response.result.schedules;
                 app.updateTimetableCard(result);
             });
-        app.getScheduleFromNetwork('metros/1/bastille/A')
-            .then((response) => {
-                if (!response) {
-                    return;
-                }
-                var result = {};
-                result.key = 'metros/1/bastille/A';
-                result.label = 'Bastille, Direction La Défense';
-                result.created = response._metadata.date;
-                result.schedules = response.result.schedules;
-                app.updateTimetableCard(result);
-            });
+    
+    app.getScheduleFromNetwork('metros/1/bastille/A')
+        .then((response) => {
+            if (!response) {
+                return;
+            }
+            var result = {};
+            result.key = 'metros/1/bastille/A';
+            result.label = 'Bastille, Direction La Défense';
+            result.created = response._metadata.date;
+            result.schedules = response.result.schedules;
+            window.FirstGetAPI = performance.now(); 
+            app.updateTimetableCard(result);
+        });
+    
 })();
